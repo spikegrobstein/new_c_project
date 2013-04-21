@@ -6,6 +6,11 @@
 #define DEFAULT_USERNAME "spike" /* default name for the user */
 #define USERNAME_SIZE    256     /* the max length a username can be */
 
+// This is a demo program to demonstrate:
+// * parsing of args
+// * testing C code
+// * documenting
+
 // getopt long options
 static struct option longopts[] = {
   { "verbose", optional_argument, NULL, 'v' },
