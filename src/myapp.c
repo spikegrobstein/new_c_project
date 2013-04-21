@@ -16,8 +16,6 @@ static struct option longopts[] = {
 int
 main(int argc, char **argv, char **env)
 {
-  printf("y0\n");
-
   // whether we're verbose or not.
   int verbose_flag = 0,
       ch,
@@ -39,9 +37,17 @@ main(int argc, char **argv, char **env)
     }
   }
 
-  printf("optind:   %d/%d\n", optind, argc);
-  printf("verbose:  %d\n", verbose_flag);
-  printf("username: %s\n", username);
+  if (optind >= argc) {
+    if (verbose_flag) { printf("- %d >= %d\n", optind, argc); }
+    printf("%s says nothing.\n", username);
+  } else {
+    if (verbose_flag) { printf("- got something to say.\n"); }
+    printf("%s: ", username);
+    for ( int i = optind; i < argc; i++ ) {
+      printf("%s ", argv[i]);
+    }
+    printf("\n");
+  }
 
   return 0;
 }
